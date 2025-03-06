@@ -65,15 +65,15 @@ $(document).ready(function () {
     $(".badge-container").append(badgeElement);
   });
 
-  certifications.forEach((badge) => {
-    const badgeElement = `
+  certifications.forEach((certification) => {
+    const certificationElement = `
         <div class="col-md-auto themed-grid-col">
-          <a href="${badge.url}" target="_blank">
-            <img width="300" src="${badge.imgSrc}" alt="" />
+          <a href="${certification.url}" target="_blank">
+            <img width="300" src="${certification.imgSrc}" alt="" />
           </a>
         </div>
       `;
-    $(".certifications-container").append(badgeElement);
+    $(".certifications-container").append(certificationElement);
   });
 });
 
