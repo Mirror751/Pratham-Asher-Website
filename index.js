@@ -2,6 +2,7 @@
 credly_start = "https://www.credly.com/badges"
 file_start = "./assets/pic"
 certmetrics_start = "https://cp.certmetrics.com/amazon/en/public/verify/credential"
+udemy_start = "https://www.udemy.com/certificate/UC-"
 
 $(document).ready(function () {
   const badges = [
@@ -54,6 +55,29 @@ $(document).ready(function () {
     }
   ];
 
+  const other_certifications = [
+    {
+      url: `${udemy_start}3f843250-6186-4852-ab89-03f4424eed96`,
+      imgSrc:
+        `${file_start}/1.jpg`,
+    },
+    {
+      url: `${udemy_start}86065177-cc06-44e9-9cbe-560db270f041`,
+      imgSrc:
+        `${file_start}/4.jpg`,
+    },
+    {
+      url: `${udemy_start}417f626e-2ea7-42db-b3c1-cc2f970ecbbc`,
+      imgSrc:
+        `${file_start}/3.jpg`,
+    },
+    {
+      url: `${udemy_start}7bd125ad-81f2-4bfc-a9b5-9bb7e496205b`,
+      imgSrc:
+        `${file_start}/2.jpg`,
+    }
+  ];
+
   badges.forEach((badge) => {
     const badgeElement = `
         <div class="col-md-4 themed-grid-col">
@@ -75,6 +99,17 @@ $(document).ready(function () {
       `;
     $(".certifications-container").append(certificationElement);
   });
+
+
+other_certifications.forEach((certification) => {
+  const certificationElement = `
+        <div class="col-md-auto themed-grid-col">
+          <a href="${certification.url}" target="_blank">
+            <img width="300" src="${certification.imgSrc}" alt="" />
+          </a>
+        </div>
+      `;
+  $(".other-certifications-container").append(certificationElement);
 });
 
-
+});

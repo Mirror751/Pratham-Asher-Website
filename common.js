@@ -11,16 +11,11 @@ const navbar = `<div>
               class="nav-link fw-bold py-1 px-0 ${(check_Location("index") || window.location.href == ("https://mirror751.github.io/Pratham-Asher-Website/")) && "active"}"
               ${check_Location("index") && `aria-current="page"`}
               href="./index.html"
-              >Home</a
-            >
+              >Home</a>
             <a class="nav-link fw-bold py-1 px-0 ${check_Location("badges") && "active"}"
             ${check_Location("badges") && `aria-current="page"`} 
-            href="./badges.html"
-              >Badges</a
-            >
-            <a class="nav-link fw-bold py-1 px-0 ${check_Location("certifications") && "active"}" 
-            ${check_Location("certifications") && `aria-current="page"`}
-            href="./certifications.html">Certifications</a>
+            href="./badges-certifications.html"
+              >Badges/Certifications</a>
             <a class="nav-link fw-bold py-1 px-0 ${check_Location("contact") && "active"}" 
             ${check_Location("contact") && `aria-current="page"`}
             href="./contact.html">Contact</a>
