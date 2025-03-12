@@ -2,3 +2,10 @@
 
 .temp{margin-top: 50pt;
 margin-bottom: 50pt;}
+
+#easter-egg-btn {
+
+    background: transparent;
+    border: none !important;
+    font-size:10;
+}

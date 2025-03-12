@@ -1,7 +1,7 @@
 function check_Location(name) {
     return window.location.href.includes(name);
 }
-
+$(document).ready(function () {
 console.log(window.location.href);
 
 const navbar = `<div>
@@ -21,4 +21,5 @@ const navbar = `<div>
             href="./contact.html">Contact</a>
           </nav>
         </div>`;
-$(".mb-auto").append(navbar);
+  $(".mb-auto").append(navbar);
+});
