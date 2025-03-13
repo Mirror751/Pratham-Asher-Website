@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <title>Pratham's Website</title>
+    <title>Cover Template · Bootstrap v5.3</title>
 
     <link
       rel="stylesheet"
@@ -17,28 +17,30 @@
 
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet" />
+    <link href="index.css" rel="stylesheet" />
   </head>
-  <body class="d-flex h-100 text-center text-bg-dark">
+  <body class="text-center text-bg-dark">
     <div
-      class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"
+      class="cover-container d-flex w-100 mx-auto flex-column p-3"
       id="easter-egg"
     >
-      <header class="mb-auto">
-        <!--Navbar added using Jquery-->
-      </header>
-
-      <main class="px-3">
-        <h1>⚒️Work in progress!!!⚒️</h1>
-        <p class="lead">Temp Text</p>
-        <p class="lead">
-          <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white"
-            >Learn more</a
+      <header class="mb-auto"><!--Navbar added using Jquery--></header>
+      <div class="temp mx-auto">
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="color-mode-switch"
+            checked
+          />
+          <label class="form-check-label" for="flexSwitchCheckDefault"
+            >Rainbow Mode</label
           >
-        </p>
-      </main>
-
-      <footer class="mt-auto text-white-50"></footer>
+        </div>
+      </div>
     </div>
+
     <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./common.js"></script>

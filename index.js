@@ -1,8 +1,18 @@
 // Purpose: To add the badges to the website
-credly_start = "https://www.credly.com/badges"
-file_start = "./assets/pic"
-certmetrics_start = "https://cp.certmetrics.com/amazon/en/public/verify/credential"
-udemy_start = "https://www.udemy.com/certificate/UC-"
+const credly_start = "https://www.credly.com/badges"
+const file_start = "./assets/pic"
+const certmetrics_start = "https://cp.certmetrics.com/amazon/en/public/verify/credential"
+const udemy_start = "https://www.udemy.com/certificate/UC-"
+
+let showEggs = false;
+showEggs = localStorage.getItem('showEggs') === "true";
+let colorInterval;
+let color = false
+color = localStorage.getItem('color') === "true";
+
+const temp = `<a id="hide" class="nav-link fw-bold py-1 px-0 ${check_Location("easter_egg.html") && "active"}" 
+            ${check_Location("contact") && `aria-current="page"`}
+            href="./easter_egg.html">🥚</a>`
 
 const badges = [
   {
@@ -77,28 +87,68 @@ const other_certifications = [
 
 async function setRandomColor() {
   const letters = '0123456789ABCDEF';
-  setInterval(() => {
+  colorInterval = setInterval(() => {
     let color = '#';
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
     $("#easter-egg").css("color", color);
     $(".btn-light-egg").css("color", color);
-    console.log("Color changed to: " + color);
+    // console.log("Color changed to: " + color);
   }, 500); // Change color every 500 milliseconds
 }
 
+function resetColor() {
+  $("#easter-egg").css("color", "white");
+  $(".btn-light-egg").css("color", "#333333");
+}
+
+function check_Location(page) { return window.location.pathname.includes(page); }
+
+function eggs() {
+  // console.log(showEggs);
+  if (showEggs) {
+    $("nav").append(temp);
+  }
+  else {
+    $("#hide").remove();
+  };
+}
+
+function setColor() {
+  console.log(color);
+  if (color) {
+    setRandomColor()
+  }
+  else {
+    clearInterval(colorInterval);
+    resetColor();
+  };
+}
+
 $(document).ready(function () {
+  $("#color-mode-switch").prop("checked", color);
+
   $("#easter-egg-btn").click(function () {
     // Action to perform when #myButton is clicked
     alert("Button with ID 'myButton' clicked!");
     // $("#easter-egg-btn").hide();
-    setRandomColor();
+    showEggs = !showEggs;
+    localStorage.setItem('showEggs', showEggs);
+    eggs();
   });
 
-  
+  $("#color-mode-switch").change(function () {
+    color = this.checked;
+    localStorage.setItem('color', color);
+    setColor();
+  });
 
-  
+  eggs();
+  setColor();
+  // $("#hide").remove();
+
+
 
   badges.forEach((badge) => {
     const badgeElement = `
@@ -123,15 +173,15 @@ $(document).ready(function () {
   });
 
 
-other_certifications.forEach((certification) => {
-  const certificationElement = `
+  other_certifications.forEach((certification) => {
+    const certificationElement = `
         <div class="col-md-auto themed-grid-col">
           <a href="${certification.url}" target="_blank">
             <img width="300" src="${certification.imgSrc}" alt="" />
           </a>
         </div>
       `;
-  $(".other-certifications-container").append(certificationElement);
-});
+    $(".other-certifications-container").append(certificationElement);
+  });
 
 });
