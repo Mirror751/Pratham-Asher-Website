@@ -11,14 +11,6 @@ margin-bottom: 50pt;}
     color: #333333;
 }
 
-.btn-light-egg,
-.btn-light-egg:hover,
-.btn-light-egg:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-}
-
-
 #pfp{
     border-radius: 50%;
     border: gray solid 5px;
