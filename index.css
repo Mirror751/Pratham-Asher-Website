@@ -8,4 +8,38 @@ margin-bottom: 50pt;}
     background: transparent;
     border: none !important;
     font-size:10;
+    color: #333333;
+}
+
+.btn-light-egg,
+.btn-light-egg:hover,
+.btn-light-egg:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+}
+
+
+#pfp{
+    border-radius: 50%;
+    border: gray solid 5px;
+}
+
+.pill-button {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: large;
+}
+.icon{width: 22px;}
+
+.cover-container-hr {
+  max-width: 70em;
 }

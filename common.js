@@ -1,10 +1,8 @@
-function check_Location(name) {
-    return window.location.href.includes(name);
-}
+function check_Location(name) { return window.location.href.includes(name); }
 $(document).ready(function () {
-console.log(window.location.href);
+  console.log(window.location.href);
 
-const navbar = `<div>
+  const navbar = `<div>
           <h3 class="float-md-start mb-0">Pratham Asher</h3>
           <nav class="nav nav-masthead justify-content-center float-md-end">
             <a

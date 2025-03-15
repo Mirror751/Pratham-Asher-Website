@@ -85,6 +85,43 @@ const other_certifications = [
   }
 ];
 
+const navElements = [{ name: "Home", link: "index.html" }, { name: "About Me", link: "About-Me.html" }, { name: "Badges/Certifications", link: "badges-certifications.html" }, { name: "Contact", link: "contact.html" }]
+const navStart = `<div>
+          <h3 class="float-md-start mb-0">Pratham Asher</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">`
+const navEnd = `</nav></div>`
+let navMid = ``
+navElements.forEach((element) => {
+  navMid += `<a class="nav-link fw-bold py-1 px-0 ${check_Location(element.link) && "active"}"
+              ${check_Location(element.link) && `aria-current="page"`}
+              href="./${element.link}">${element.name}</a>`
+})
+const navbar = `${navStart}${navMid}${navEnd}`;
+
+
+// const navbar = `<div>
+//           <h3 class="float-md-start mb-0">Pratham Asher</h3>
+//           <nav class="nav nav-masthead justify-content-center float-md-end">
+//             <a
+//               class="nav-link fw-bold py-1 px-0 ${(check_Location("index") || window.location.href == ("https://mirror751.github.io/Pratham-Asher-Website/") || window.location.href == ("https://www.prathamasher.com/")) && "active"}"
+//               ${check_Location("index") && `aria-current="page"`}
+//               href="./index.html"
+//               >Home</a>
+//             <a
+//               class="nav-link fw-bold py-1 px-0 ${check_Location("About-Me") && "active"}"
+//               ${check_Location("About-Me") && `aria-current="page"`}
+//               href="./About-Me.html"
+//               >About Me</a>
+//             <a class="nav-link fw-bold py-1 px-0 ${check_Location("badges") && "active"}"
+//             ${check_Location("badges") && `aria-current="page"`} 
+//             href="./badges-certifications.html"
+//               >Badges/Certifications</a>
+//             <a class="nav-link fw-bold py-1 px-0 ${check_Location("contact") && "active"}" 
+//             ${check_Location("contact") && `aria-current="page"`}
+//             href="./contact.html">Contact</a>
+//           </nav>
+//         </div>`;
+
 async function setRandomColor() {
   const letters = '0123456789ABCDEF';
   colorInterval = setInterval(() => {
@@ -126,7 +163,22 @@ function setColor() {
   };
 }
 
+function setBadges(x, size, col) {
+  return `
+        <div class="${col} themed-grid-col">
+          <a href="${x.url}" target="_blank">
+            <img width="${size} height="${size}" src="${x.imgSrc}" alt="" />
+          </a>
+        </div>
+      `
+}
+
 $(document).ready(function () {
+  console.log(window.location.href);
+
+
+  $(".mb-auto").append(navbar);
+
   $("#color-mode-switch").prop("checked", color);
 
   $("#easter-egg-btn").click(function () {
@@ -147,41 +199,16 @@ $(document).ready(function () {
   eggs();
   setColor();
   // $("#hide").remove();
+  if (check_Location("index") || window.location.href == ("https://mirror751.github.io/Pratham-Asher-Website/") || window.location.href == ("https://www.prathamasher.com/")) {
+    $("nav :first-child").addClass("active");
+    $("nav :first-child").addClass(`aria-current="page"`);
+  }
+
+  badges.forEach((badge) => { $(".badge-container").append(setBadges(badge, 200, "col-md-4")); });
+
+  certifications.forEach((certification) => { $(".certifications-container").append(setBadges(certification, 300, "col-md-auto")); });
 
 
-
-  badges.forEach((badge) => {
-    const badgeElement = `
-        <div class="col-md-4 themed-grid-col">
-          <a href="${badge.url}" target="_blank">
-            <img width="200" src="${badge.imgSrc}" alt="" />
-          </a>
-        </div>
-      `;
-    $(".badge-container").append(badgeElement);
-  });
-
-  certifications.forEach((certification) => {
-    const certificationElement = `
-        <div class="col-md-auto themed-grid-col">
-          <a href="${certification.url}" target="_blank">
-            <img width="300" src="${certification.imgSrc}" alt="" />
-          </a>
-        </div>
-      `;
-    $(".certifications-container").append(certificationElement);
-  });
-
-
-  other_certifications.forEach((certification) => {
-    const certificationElement = `
-        <div class="col-md-auto themed-grid-col">
-          <a href="${certification.url}" target="_blank">
-            <img width="300" src="${certification.imgSrc}" alt="" />
-          </a>
-        </div>
-      `;
-    $(".other-certifications-container").append(certificationElement);
-  });
+  other_certifications.forEach((other_certification) => { $(".other-certifications-container").append(setBadges(other_certification, 300, "col-md-auto")); });
 
 });

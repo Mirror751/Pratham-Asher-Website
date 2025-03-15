@@ -11,12 +11,7 @@
   text-shadow: none; /* Prevent inheritance from `body` */
 }
 
-.btn-light-egg,
-.btn-light-egg:hover,
-.btn-light-egg:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-}
+
 
 
 /*
