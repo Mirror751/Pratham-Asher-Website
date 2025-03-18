@@ -1,19 +1,22 @@
-.h-200 {  height: 200% !important;}
-
-.temp{margin-top: 50pt;
-margin-bottom: 50pt;}
-
-#easter-egg-btn {
-
-    background: transparent;
-    border: none !important;
-    font-size:10;
-    color: #333333;
+.h-200 {
+  height: 200% !important;
 }
 
-#pfp{
-    border-radius: 50%;
-    border: gray solid 5px;
+.temp {
+  margin-top: 50pt;
+  margin-bottom: 50pt;
+}
+
+#easter-egg-btn {
+  background: transparent;
+  border: none !important;
+  font-size: 10;
+  color: #333333;
+}
+
+#pfp {
+  border-radius: 50%;
+  border: gray solid 5px;
 }
 
 .pill-button {
@@ -30,8 +33,27 @@ margin-bottom: 50pt;}
   font-weight: bold;
   font-size: large;
 }
-.icon{width: 22px;}
+.icon {
+  width: 22px;
+}
 
 .cover-container-hr {
   max-width: 70em;
+}
+
+#name {
+  text-decoration: none;
+  color: inherit;
+}
+
+.badges {
+  width: 200px;
+  height: 200px;
+}
+
+.certification {
+  width: 300px;
+}
+.collage {
+  border-radius: 50%;
 }

@@ -10,9 +10,9 @@ let colorInterval;
 let color = false
 color = localStorage.getItem('color') === "true";
 
-const temp = `<a id="hide" class="nav-link fw-bold py-1 px-0 ${check_Location("easter_egg.html") && "active"}" 
+const temp = `<li class="nav-item "><a id="hide" class="nav-link fw-bold py-1 px-auto ${check_Location("easter_egg.html") && "active"}" 
             ${check_Location("contact") && `aria-current="page"`}
-            href="./easter_egg.html">🥚</a>`
+            href="./easter_egg.html">🥚</a></li>`
 
 const badges = [
   {
@@ -85,17 +85,43 @@ const other_certifications = [
   }
 ];
 
-const navElements = [{ name: "Home", link: "index.html" }, { name: "About Me", link: "About-Me.html" }, { name: "Badges/Certifications", link: "badges-certifications.html" }, { name: "Contact", link: "contact.html" }]
-const navStart = `<div>
-          <h3 class="float-md-start mb-0">Pratham Asher</h3>
-          <nav class="nav nav-masthead justify-content-center float-md-end">`
-const navEnd = `</nav></div>`
-let navMid = ``
+const navElements = [
+  { name: "Home", link: "index.html" },
+  { name: "About Me", link: "About-Me.html" },
+  { name: "Badges/Certifications", link: "badges-certifications.html" },
+  { name: "Contact", link: "contact.html" }
+];
+
+const navStart = `
+<nav class="navbar navbar-expand-md navbar-dark">
+  <div class="container-fluid">
+    <h3><a id="name" href="https://www.prathamasher.com/">Pratham Asher</a></h3>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+`;
+
+const navEnd = `
+      </ul>
+    </div>
+  </div>
+</nav>
+`;
+
+let navMid = ``;
+let count = 0;
 navElements.forEach((element) => {
-  navMid += `<a class="nav-link fw-bold py-1 px-0 ${check_Location(element.link) && "active"}"
-              ${check_Location(element.link) && `aria-current="page"`}
-              href="./${element.link}">${element.name}</a>`
-})
+  navMid += `
+    <li class="nav-item ">
+      <a id="${count}" class="nav-link fw-bold py-1 px-auto ${check_Location(element.link) ? "active" : ""}"
+         ${check_Location(element.link) ? `aria-current="page"` : ""}
+         href="./${element.link}">${element.name}</a>
+    </li>
+  `;
+});
+
 const navbar = `${navStart}${navMid}${navEnd}`;
 
 
@@ -143,9 +169,9 @@ function resetColor() {
 function check_Location(page) { return window.location.pathname.includes(page); }
 
 function eggs() {
-  // console.log(showEggs);
+  console.log(showEggs);
   if (showEggs) {
-    $("nav").append(temp);
+    $(".ms-auto").append(temp);
   }
   else {
     $("#hide").remove();
@@ -153,7 +179,7 @@ function eggs() {
 }
 
 function setColor() {
-  console.log(color);
+  // console.log(color);
   if (color) {
     setRandomColor()
   }
@@ -167,7 +193,7 @@ function setBadges(x, size, col) {
   return `
         <div class="${col} themed-grid-col">
           <a href="${x.url}" target="_blank">
-            <img width="${size} height="${size}" src="${x.imgSrc}" alt="" />
+            <img class= "${size}" src="${x.imgSrc}" alt="" />
           </a>
         </div>
       `
@@ -200,15 +226,15 @@ $(document).ready(function () {
   setColor();
   // $("#hide").remove();
   if (check_Location("index") || window.location.href == ("https://mirror751.github.io/Pratham-Asher-Website/") || window.location.href == ("https://www.prathamasher.com/")) {
-    $("nav :first-child").addClass("active");
-    $("nav :first-child").addClass(`aria-current="page"`);
+    $(".1").addClass("active");
+    $(".1").addClass(`aria-current="page"`);
   }
 
-  badges.forEach((badge) => { $(".badge-container").append(setBadges(badge, 200, "col-md-4")); });
+  badges.forEach((badge) => { $(".badge-container").append(setBadges(badge, "badges", "col-md-4")); });
 
-  certifications.forEach((certification) => { $(".certifications-container").append(setBadges(certification, 300, "col-md-auto")); });
+  certifications.forEach((certification) => { $(".certifications-container").append(setBadges(certification, "certification", "col-md-auto")); });
 
 
-  other_certifications.forEach((other_certification) => { $(".other-certifications-container").append(setBadges(other_certification, 300, "col-md-auto")); });
+  other_certifications.forEach((other_certification) => { $(".other-certifications-container").append(setBadges(other_certification, "certification", "col-md-auto")); });
 
 });
