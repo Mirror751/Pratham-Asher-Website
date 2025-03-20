@@ -57,3 +57,46 @@
 .collage {
   border-radius: 50%;
 }
+
+.drag {
+  pointer-events: none;
+}
+
+.read-more--close {
+  opacity: 0;
+  height: 0;
+  transition: all 0.5s;
+}
+
+.read-more--open {
+  opacity: 1;
+  height: 5rem;
+}
+
+.read-more-btn {
+  padding: 0.6rem 1.5rem;
+  z-index: 1;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.read-more-btn:hover {
+  background-color: #fff;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100; /* Ensure it stays above other elements */
+  background-color: #333; /* Add a background color to prevent transparency issues */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+}
+
+.read-more-btn-close:hover {
+  transform: translateY(3px);
+}
+
+.read-more-btn-open:hover {
+  transform: translateY(-3px);
+}

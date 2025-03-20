@@ -93,7 +93,7 @@ const navElements = [
 ];
 
 const navStart = `
-<nav class="navbar navbar-expand-md navbar-dark">
+<nav class="navbar navbar-expand-md navbar-dark" style="position: fixed;">
   <div class="container-fluid">
     <h3><a id="name" href="https://www.prathamasher.com/">Pratham Asher</a></h3>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -206,6 +206,20 @@ $(document).ready(function () {
   $(".mb-auto").append(navbar);
 
   $("#color-mode-switch").prop("checked", color);
+
+  $(".read-more-btn").click(function () {
+    const $this = $(this); // Wrap 'this' in a jQuery object
+
+    if ($this.text().trim() === "Read More") {
+      // Change text to "Read Less" and update classes
+      $this.text("Read Less");
+      $this.addClass("read-more-btn-open").removeClass("read-more-btn-close");
+    } else {
+      // Change text to "Read More" and update classes
+      $this.text("Read More");
+      $this.addClass("read-more-btn-close").removeClass("read-more-btn-open");
+    }
+  });
 
   $("#easter-egg-btn").click(function () {
     // Action to perform when #myButton is clicked
